@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2241016220</title>
+    <style>
+        canvas{
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="mycanvas" width="400" height="200"></canvas>
+</body>
+<script>
+    let padding = 20
+    let canvas = document.getElementById("mycanvas")
+    let ctx = canvas.getContext("2d")
+    ctx.lineWidth = padding
+    let w = canvas.width - 2*padding 
+    let h = canvas.height - 2*padding 
+    ctx.strokeStyle = "red"
+    ctx.strokeRect(padding,padding,w,h)
+</script>
+</html>

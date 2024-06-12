@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2241016220</title>
+</head>
+<body>
+<label for="filterInput">Enter Pokémon type to filter:</label>
+<input type="text" id="filterInput">
+<button id="filterButton">Filter</button>
+
+<div id="results"></div>
+
+<script>
+document.getElementById("filterButton").addEventListener("click", function() {
+    var filterCriteria = document.getElementById("filterInput").value.toLowerCase();
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "data.xml", true); 
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+                var xmlDoc = xhr.responseXML;
+                var filteredData = [];
+
+                var pokemons = xmlDoc.getElementsByTagName("pokemon");
+                for (var i = 0; i < pokemons.length; i++) {
+                    var name = pokemons[i].getElementsByTagName("name")[0].textContent;
+                    var type = pokemons[i].getElementsByTagName("type")[0].textContent;
+                    
+                    if (type.toLowerCase() === filterCriteria || name.toLowerCase() === filterCriteria) {
+                        filteredData.push(name + " - " + type);
+                    }
+                }
+                displayResults(filteredData);
+            } else {
+                displayError("Failed to fetch Pokémon data from the XML API. Status code: " + xhr.status);
+            }
+        }
+    };
+    xhr.send();
+});
+
+function displayResults(data) {
+    var resultsDiv = document.getElementById("results");
+    resultsDiv.innerHTML = "";
+    if (data.length > 0) {
+        var resultList = document.createElement("ul");
+        data.forEach(function(item) {
+            var listItem = document.createElement("li");
+            listItem.textContent = item;
+            resultList.appendChild(listItem);
+        });
+        resultsDiv.appendChild(resultList);
+    } else {
+        resultsDiv.textContent = "No Pokémon found matching the filter criteria.";
+    }
+}
+
+function displayError(message) {
+    var resultsDiv = document.getElementById("results");
+    resultsDiv.textContent = "Error: " + message;
+}
+</script>
+</body>
+</html>

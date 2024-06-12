@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Puzzle Game</title>
+<style>
+    #canvasContainer {
+        position: relative;
+    }
+    canvas {
+        border: 1px solid black;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<div id="canvasContainer">
+    <canvas id="canvas" width="400" height="400"></canvas>
+</div>
+<script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    // Load image onto canvas
+    const image = new Image();
+    image.onload = function() {
+        ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+        cutImageIntoPieces();
+    }
+    image.src = 'puzzle.png'; // Replace 'your_image.jpg' with your image file path
+
+    const pieces = [];
+    const pieceWidth = canvas.width / 4;
+    const pieceHeight = canvas.height / 4;
+
+    function cutImageIntoPieces() {
+        for (let i = 0; i < 4; i++) {
+            for (let j = 0; j < 4; j++) {
+                const piece = {
+                    sx: j * pieceWidth,
+                    sy: i * pieceHeight,
+                    dx: j * pieceWidth,
+                    dy: i * pieceHeight,
+                    width: pieceWidth,
+                    height: pieceHeight
+                };
+                pieces.push(piece);
+            }
+        }
+        shufflePieces();
+        drawPieces();
+    }
+
+    function shufflePieces() {
+        pieces.sort(() => Math.random() - 0.5);
+    }
+
+    function drawPieces() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        pieces.forEach(piece => {
+            ctx.drawImage(image, piece.sx, piece.sy, piece.width, piece.height, piece.dx, piece.dy, piece.width, piece.height);
+        });
+    }
+
+    let selectedPiece = null;
+    let offsetX = 0;
+    let offsetY = 0;
+
+    canvas.addEventListener('mousedown', e => {
+        const mouseX = e.clientX - canvas.getBoundingClientRect().left;
+        const mouseY = e.clientY - canvas.getBoundingClientRect().top;
+
+        for (const piece of pieces) {
+            if (mouseX >= piece.dx && mouseX <= piece.dx + piece.width &&
+                mouseY >= piece.dy && mouseY <= piece.dy + piece.height) {
+                selectedPiece = piece;
+                offsetX = mouseX - piece.dx;
+                offsetY = mouseY - piece.dy;
+                break;
+            }
+        }
+    });
+
+    canvas.addEventListener('mousemove', e => {
+        if (selectedPiece) {
+            const mouseX = e.clientX - canvas.getBoundingClientRect().left;
+            const mouseY = e.clientY - canvas.getBoundingClientRect().top;
+            selectedPiece.dx = mouseX - offsetX;
+            selectedPiece.dy = mouseY - offsetY;
+            drawPieces();
+        }
+    });
+
+    canvas.addEventListener('mouseup', () => {
+        selectedPiece = null;
+        checkIfPuzzleCompleted();
+    });
+
+    function checkIfPuzzleCompleted() {
+        let correct = true;
+        pieces.forEach(piece => {
+            if (piece.dx !== piece.sx || piece.dy !== piece.sy) {
+                correct = false;
+            }
+        });
+        if (correct) {
+            alert('Congratulations! You completed the puzzle.');
+        }
+    }
+</script>
+</body>
+</html>

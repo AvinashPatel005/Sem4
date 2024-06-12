@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      button {
+        width: 400px;
+        height: 400px;
+        background-color: #43e;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="btn">HOVER</button>
+    <script>
+        let btn = document.getElementById("btn")
+        btn.addEventListener("mousemove",(e)=>{
+            btn.style.background="radial-gradient(farthest-corner at "+e.offsetX+"px "+e.offsetY+"px,#f35 0%,#43e 50%)"
+        })
+        btn.addEventListener("mouseleave",()=>{
+            btn.style.background="#43e"
+        })
+    </script>
+  </body>
+</html>

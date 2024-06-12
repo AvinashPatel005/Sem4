@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas{
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <img src="" id="image" alt="">
+    <canvas id="mycanvas" width="400" height="400"></canvas>
+    <script>
+        var canvas = document.getElementById("mycanvas");
+        var ctx = canvas.getContext("2d");
+        let image = document.getElementById("image")
+
+        let points = 20
+        let origin = 200
+        let innerRadius = 100
+        let outerRadius = 200
+        let offsetOuter = 0.1
+        let atInner = true
+        ctx.beginPath();
+        ctx.moveTo(origin+innerRadius, origin);
+        ctx.fillStyle="yellow"
+        for(let i = 0; i < points; i++){
+            if(atInner){
+                let outerPointX = outerRadius*Math.cos(Math.PI/points*2*i+Math.PI/points+offsetOuter)+origin
+                let outerPointY = outerRadius*Math.sin(Math.PI/points*2*i+Math.PI/points+offsetOuter)+origin
+                ctx.lineTo(outerPointX,outerPointY)
+                atInner = false
+            }else{
+                let innerPointX = innerRadius*Math.cos(Math.PI/points*2*i)+origin
+                let innerPointY = innerRadius*Math.sin(Math.PI/points*2*i)+origin
+                ctx.lineTo(innerPointX,innerPointY)
+                atInner = true
+                i--
+            }
+            
+        }
+        ctx.fill();
+        image.src = canvas.toDataURL()
+    </script>
+</body>
+
+</html>

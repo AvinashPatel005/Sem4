@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2241016220</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        #animatedImage {
+            position: relative;
+            width: 200px;
+            height: auto;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $("#animatedImage").click(function () {
+                $(this).animate({
+                    left: "+=100px"
+                }, 500);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <img id="animatedImage" src="https://wallpapers.com/images/featured/iron-man-
+ouqxo5w2b59h0042.jpg" alt="Sample Image">
+</body>
+
+</html>

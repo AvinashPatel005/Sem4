@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      canvas {
+        background-color: white;
+        border: 2px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="mycanvas" width="600" height="500"></canvas>
+    <input id="text" type="text" placeholder="Enter Text To Add" />
+    <button id="add">Add</button>
+
+    <script>
+      let canvas = document.getElementById("mycanvas");
+      let ctx = canvas.getContext("2d");
+      let text = document.getElementById("text");
+      let add = document.getElementById("add");
+      let words = [];
+
+      let lineHeight = 40;
+      ctx.font = "30px arial";
+      ctx.fillStyle = "blue";
+      ctx.textAlign = "center";
+
+      add.addEventListener("click", () => {
+        if (text.value != "") {
+          words.push(text.value);
+          text.value = "";
+          update();
+        }
+      });
+
+      function update() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        let startY = (canvas.height - lineHeight * words.length) / 2;
+        for (i = 0; i < words.length; i++) {
+          ctx.fillText(words[i], canvas.width / 2, startY + lineHeight * i);
+        }
+      }
+    </script>
+  </body>
+</html>

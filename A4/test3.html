@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+          background-color: white;
+          border: 2px solid black;
+        }
+      </style>
+</head>
+<body>
+    <canvas id="c1" width="400" height="400"></canvas>
+    <canvas id="c2" width="400" height="400"></canvas>
+</body>
+<script>
+    let c1 = document.getElementById("c1");
+    let ctx = c1.getContext("2d");
+
+    let grad = ctx.createLinearGradient(0,0,400,400)
+    grad.addColorStop(0,"red")
+    grad.addColorStop(0.5,"green")
+    grad.addColorStop(1,"blue")
+    ctx.fillStyle=grad
+    ctx.fillRect(0,0,400,400)
+
+    let c2 = document.getElementById("c2");
+    ctx1 = c2.getContext("2d");
+
+    let grad1 = ctx1.createRadialGradient(0,300,10,200,100,300)
+    grad1.addColorStop(0,"red")
+    grad1.addColorStop(0.5,"green")
+    grad1.addColorStop(1,"blue")
+    ctx1.fillStyle=grad1
+    ctx1.moveTo(200,100)
+    ctx1.lineTo(0,300)
+    ctx1.lineTo(400,300)
+    ctx1.fill()
+</script>
+</html>

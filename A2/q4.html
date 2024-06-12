@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2241016220</title>
+  </head>
+  <body>
+    <script>
+      const items = ["Rock", "Paper", "Scissors"];
+      const playerSelection = 0
+      const computerSelection = Math.floor(Math.random() * 3);
+      const playerItem = items[playerSelection];
+      const computerItem = items[computerSelection];
+      let result;
+      if (playerSelection === computerSelection) {
+        result = "It is a tie!";
+      } else {
+        if (
+          (playerSelection === 0 && computerSelection === 2) ||
+          (playerSelection === 1 && computerSelection === 0) ||
+          (playerSelection === 2 && computerSelection === 1)
+        ) {
+          result = `Player wins! ${playerItem} beats ${computerItem}`;
+        } else {
+          result = `Computer wins! ${computerItem} beats ${playerItem}`;
+        }
+      }
+      document.write(
+        `Player chose ${playerItem}<br>Computer chose ${computerItem}.<br> ${result}`
+      );
+    </script>
+  </body>
+</html>

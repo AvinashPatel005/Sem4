@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2241016220</title>
+</head>
+<body>
+    <script>
+       function University(name) {
+            this.name = name;
+            this.departments = [];
+            University.prototype.addDepartment = addDepartment;
+            University.prototype.removeDepartment = removeDepartment;
+            University.prototype.displayDepartments = displayDepartments;
+        }
+
+        function addDepartment(department) {
+            this.departments.push(department);
+        }
+
+        function removeDepartment(department) {
+            this.departments = this.departments.filter(
+                (dept) => {return dept !== department}
+            );
+        }
+
+        function displayDepartments() {
+            document.write("Departments of " + this.name + " :- ");
+            for (i of this.departments) {
+                document.write(i + ", ");
+            }
+            document.write("<br>");
+        }
+
+
+        const myUniversity = new University("ITER");
+        myUniversity.addDepartment("CSIT");
+        myUniversity.addDepartment("CSE");
+        myUniversity.addDepartment("ECE");
+        myUniversity.displayDepartments();
+        myUniversity.removeDepartment("CSE");
+        myUniversity.displayDepartments(); 
+    </script>
+</body>
+</html>

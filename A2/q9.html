@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2241016220</title>
+</head>
+<body>
+    <script>
+        function MenuPriceCalculator(p1, p2) {
+          this.item1 = p1;
+          this.item2 = p2;
+          MenuPriceCalculator.prototype.getTotal = calculateTotalCost;
+        }
+  
+        function calculateTotalCost(item1_quantity, item2_quantity) {
+          const totalCost =
+            item1_quantity * this.item1 + item2_quantity * this.item2;
+          return totalCost;
+        }
+  
+        const menu1 = new MenuPriceCalculator(5, 3);
+        const menu2 = new MenuPriceCalculator(4, 6);
+  
+        document.write(`Total cost for menu 1: $${menu1.getTotal(3, 2)}`);
+        document.write("<br>");
+        document.write(`Total cost for menu 2: $${menu2.getTotal(5, 3)}`);
+      </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pokemonList>
+    <pokemon>
+        <name>Pikachu</name>
+        <type>Electric</type>
+    </pokemon>
+    <pokemon>
+        <name>Charizard</name>
+        <type>Fire</type>
+    </pokemon>
+    <pokemon>
+        <name>Bulbasaur</name>
+        <type>Grass</type>
+    </pokemon>
+    <pokemon>
+        <name>Squirtle</name>
+        <type>Water</type>
+    </pokemon>
+    <pokemon>
+        <name>Jigglypuff</name>
+        <type>Normal</type>
+    </pokemon>
+    <pokemon>
+        <name>Gengar</name>
+        <type>Ghost</type>
+    </pokemon>
+    <pokemon>
+        <name>Infernape</name>
+        <type>Fire</type>
+    </pokemon>
+</pokemonList>

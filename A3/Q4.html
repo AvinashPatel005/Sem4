@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2241016220</title>
+</head>
+<body>
+<div id="output"></div>
+
+<script>
+function fetchDataFromXML() {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "data.xml", true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            var xmlDoc = xhr.responseXML;
+            var outputDiv = document.getElementById("output");
+            outputDiv.innerHTML = "";
+
+            var pokemons = xmlDoc.getElementsByTagName("pokemon");
+            for (var i = 0; i < pokemons.length; i++) {
+                var poke = pokemons[i];
+                var name = poke.getElementsByTagName("name")[0].childNodes[0].nodeValue;
+                var type = poke.getElementsByTagName("type")[0].childNodes[0].nodeValue;
+
+                outputDiv.innerHTML += "<p>Name: " + name + ", Type: " + type +"</p>";
+            }
+        }
+    };
+    xhr.send();
+}
+
+fetchDataFromXML();
+</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2241016220</title>
+    <style>
+      canvas {
+        background-color: white;
+        border: 2px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="mycanvas" width="600" height="500"></canvas>
+    <input type="color" id="colorPicker">
+    <input min="1" max='20' type="range" id="width">
+    <button id="erase" onclick="erase()">Erase</button>
+    <button id="reset" onclick="reset()">Reset</button>
+    
+    <script>
+        let colorPicker = document.getElementById("colorPicker")
+        let width = document.getElementById("width")
+      let canvas = document.getElementById("mycanvas");
+      let ctx = canvas.getContext("2d");
+      let lastX = 0;
+      let lastY = 0;
+      let isDrawing = false;
+      let isErasing = false
+      canvas.addEventListener("mousedown", (e) => {
+        isDrawing = true;
+        lastX = e.offsetX;
+        lastY = e.offsetY;
+      });
+      document.addEventListener("mouseup", (e) => {
+        isDrawing = false;
+      });
+      canvas.addEventListener("mouseup", (e) => {
+        isDrawing = false;
+      });
+      canvas.addEventListener("mousemove", (e) => {
+        if (isDrawing) {
+            ctx.beginPath();
+          ctx.moveTo(lastX, lastY);
+          ctx.lineTo(e.offsetX, e.offsetY);
+          ctx.lineWidth=width.value
+          ctx.lineCap = "round"
+          ctx.strokeStyle = colorPicker.value;
+          if(isErasing) ctx.strokeStyle = "white"
+          ctx.stroke();
+          ctx.closePath();
+          lastX = e.offsetX;
+          lastY = e.offsetY;
+        }
+      });
+      function reset() {
+        ctx.clearRect(0,0,canvas.width,canvas.height)
+        isErasing = false
+      }
+      function erase(){
+        isErasing = !isErasing
+      }
+    </script>
+  </body>
+</html>

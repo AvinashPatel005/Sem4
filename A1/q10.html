@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>221016220</title>
+</head>
+<body>
+    <script>
+function Book(title, author, publicationYear) {
+    this.title=title
+    this.author=author
+    this.publicationYear=publicationYear
+    Book.prototype.displayDetails = function() {
+            document.write(`Title: ${this.title}`);
+            document.write(`Author: ${this.author}`);
+            document.write(`Publication Year: ${this.publicationYear}`);
+        }
+}
+
+function Ebook(title, author, publicationYear, price) {
+    const book =new Book(title, author, publicationYear);
+    book.price = price;
+    book.displayDetails = function() {
+        document.write(`Title: ${this.title}<br>`);
+        document.write(`Author: ${this.author}<br>`);
+        document.write(`Publication Year: ${this.publicationYear}<br>`);
+        document.write(`Price: Rs ${this.price}<br>`);
+    };
+    return book;
+}
+const myEbook =new Ebook('xyz', 'abc', 2023, 1225.25);
+myEbook.displayDetails();
+
+    </script>
+</body>
+</html>

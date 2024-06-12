@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas{
+            border: 2px solid red;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="mycanvas" width="400" height="200"></canvas>
+</body>
+<script> 
+    let canvas = document.getElementById("mycanvas")
+    let ctx = canvas.getContext("2d")
+    let x = 150
+    let y = 50
+    let dx = 4
+    let dy = 4
+    let radius = 30
+    let color = "red"
+    function drawCircle(){
+        ctx.clearRect(0,0,canvas.width,canvas.height)
+        ctx.beginPath()
+        ctx.arc(x,y,radius,0,Math.PI*2,true)
+        ctx.fillStyle = color
+        ctx.fill()
+    }
+    function update(){
+        requestAnimationFrame(update)
+        drawCircle()
+        if(x+radius+dx>canvas.width||x-radius+dx<0){
+            color=randomColor()
+            dx=-dx
+        }
+        if(y+radius+dy>canvas.height||y-radius+dy<0){
+            color=randomColor()
+            dy=-dy
+        }
+        x+=dx
+        y+=dy
+    }
+    update()
+    function randomColor(){
+        let colors = ["red","blue","green","yellow","orange","purple","pink","white","brown","gray","aqua"]
+        let i = Math.floor(Math.random()*colors.length)
+        console.log(i);
+        return colors[i]
+    }
+</script>
+</html>

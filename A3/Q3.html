@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>2241016220</title>
+</head>
+
+<body>
+    <textarea id="inputTextarea" rows="5" cols="20"
+        placeholder="Enter text containing email addresses..."></textarea><br />
+    <button id="extractButton">Extract Emails</button><br />
+    <textarea id="outputTextarea" rows="5" cols="20" placeholder="Extracted emails will appear here..."
+        readonly></textarea>
+
+    <script>
+        var inputTextarea = document.getElementById("inputTextarea");
+        var outputTextarea = document.getElementById("outputTextarea");
+        var extractButton = document.getElementById("extractButton");
+
+        extractButton.addEventListener("click", function () {
+            var inputContent = inputTextarea.value;
+            var emailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g;
+            var extractedEmails = inputContent.match(emailRegex) || [];
+
+            var uniqueEmails = [];
+
+            extractedEmails.forEach(function (email) {
+                if (!uniqueEmails.includes(email)) {
+                    uniqueEmails.push(email);
+                }
+            });
+
+            outputTextarea.value = uniqueEmails.join("\n");
+        });
+    </script>
+</body>
+
+</html>

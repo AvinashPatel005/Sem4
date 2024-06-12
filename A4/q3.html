@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+<body>
+    <canvas id="mycanvas" width="400" height="600"></canvas>
+</body>
+<script> 
+    let canvas = document.getElementById("mycanvas")
+    let ctx = canvas.getContext("2d")
+    //head
+    ctx.beginPath()
+    ctx.arc(200,100,50,0,Math.PI*2,true)
+    ctx.fillStyle = "red"
+    ctx.fill()
+    //eyes
+    ctx.beginPath()
+    ctx.fillStyle = "black"
+    ctx.arc(180,90,10,0,Math.PI*2,true)
+    ctx.fill()
+    ctx.beginPath()
+    ctx.arc(220,90,10,0,Math.PI*2,true)
+    ctx.fill()
+    //mouth
+    ctx.beginPath()
+    ctx.arc(200,120,20,0,Math.PI)
+    ctx.fill()
+    //nose
+    ctx.moveTo(200,100)
+    ctx.lineTo(200,110)
+    ctx.stroke()
+    //body
+    ctx.moveTo(200,150)
+    ctx.lineTo(200,250)
+    ctx.stroke()
+    //legs
+    ctx.moveTo(150,300)
+    ctx.lineTo(200,250)
+    ctx.lineTo(250,300)
+    ctx.stroke()
+    //hands
+    ctx.moveTo(150,180)
+    ctx.lineTo(250,180)
+    ctx.stroke()
+    //hat
+    ctx.beginPath()
+    ctx.fillStyle ="blue"
+    ctx.moveTo(150,60)
+    ctx.lineTo(250,60)
+    ctx.lineTo(200,40)
+    ctx.fill()
+
+</script>
+</html>

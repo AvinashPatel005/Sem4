@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2241016220</title>
+    <style>
+        canvas {
+          background-color: white;
+          border: 2px solid black;
+        }
+      </style>
+</head>
+<body>
+    <canvas id="c1" width="100" height="100"></canvas>
+    <canvas id="c2" width="100" height="100"></canvas>
+    <canvas id="c3" width="100" height="100"></canvas>
+</body>
+<script>
+    let c1 = document.getElementById("c1");
+    let ctx1 = c1.getContext("2d");
+    let c2 = document.getElementById("c2");
+    let ctx2 = c2.getContext("2d");
+    let c3 = document.getElementById("c3");
+    let ctx3 = c3.getContext("2d");
+
+    ctx1.strokeRect(20,20,60,60)
+    ctx2.arc(50,50,25,0,Math.PI*2)
+    ctx2.stroke()
+
+    ctx3.drawImage(c1,0,0)
+    ctx3.drawImage(c2,0,0)
+</script>
+</html>

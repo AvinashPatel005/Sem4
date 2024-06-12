@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2241016220</title>
+</head>
+<body>
+    <script>
+        function Employee(fname, lname, year) {
+          this.firstName = fname;
+          this.lastName = lname;
+          this.workingYears = year;
+          
+        }
+        Employee.prototype.display = function(){
+              document.write(`${this.firstName} ${this.lastName}, has been working for ${this.workingYears} years.`);
+          }
+        const employees = [
+          new Employee("Sitesh", "Samal", 5),
+          new Employee("Prabhas", "Majhi", 7),
+          new Employee("Souvik", "Maji", 3),
+        ];
+        employees.forEach(e=>{
+          e.display()
+          document.write("<br>")
+  
+        })
+      </script>
+</body>
+</html>

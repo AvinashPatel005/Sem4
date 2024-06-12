@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>2241016220</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            var canvas = document.getElementById('drawingCanvas');
+            var context = canvas.getContext('2d');
+            var drawing = false;
+            function getMousePos(canvas, event) {
+                var rect = canvas.getBoundingClientRect();
+                return {
+                    x: event.clientX - rect.left,
+                    y: event.clientY - rect.top
+                };
+            } $('#drawingCanvas').mousedown(function (event) {
+                drawing = true;
+                var pos = getMousePos(canvas, event);
+                context.beginPath();
+                context.moveTo(pos.x, pos.y);
+            }); $('#drawingCanvas').mousemove(function (event) {
+                if (drawing) {
+                    var pos = getMousePos(canvas, event);
+                    context.lineTo(pos.x, pos.y);
+                    context.stroke();
+                }
+            }); $('#drawingCanvas').mouseup(function (event) {
+                drawing = false;
+            }); $('#drawingCanvas').mouseleave(function (event) {
+                drawing = false;
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <canvas id="drawingCanvas" width="800" height="600"></canvas>
+</body>
+
+</html>

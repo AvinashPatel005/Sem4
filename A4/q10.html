@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subham Lenka</title>
+</head>
+<body>
+    <video id="myvideo" height="400" controls autoplay muted>
+        <source src="v1.mp4" type="video/mp4">
+        Your browser does not support the video element.
+    </video>
+    <br>
+    <button id="play" onclick="playM()">Play</button>
+    <button id="pause" onclick="pauseM()">Pause</button>
+    <input id="volume" type="range" min="1" max="100">
+    <span id="currentTime"></span> / <span id="totalTime">0:00</span>
+    <br>
+    <h2>Playlist</h2>
+    <ul>
+        <li onclick="playVideo(1)">v1</li>
+        <li onclick="playVideo(2)">v2</li>
+        <li onclick="playVideo(3)">v3</li>
+        <li onclick="playVideo(3)">v4</li>
+    </ul>
+    <script>
+        let myvideo = document.getElementById("myvideo")
+        let play = document.getElementById("play")
+        let pause = document.getElementById("pause")
+        let volumeControl = document.getElementById("volume")
+
+        let currentTimeDisplay = document.getElementById("currentTime");
+        let totalTimeDisplay = document.getElementById("totalTime");
+
+        function playVideo(v){
+            myvideo.src = "v"+v+".mp4"
+        }
+        function playM(){
+            myvideo.play()
+        }
+        function pauseM(){
+            myvideo.pause()
+        }
+        volumeControl.addEventListener("input", function() {
+        myvideo.volume = volumeControl.value/100;
+        console.log("sdad");
+    });
+    setInterval(() => {
+        currentTimeDisplay.innerText=Math.floor(myvideo.currentTime/60)+":"+Math.floor(myvideo.currentTime%60)+"s"
+        totalTimeDisplay.innerText=Math.floor(myvideo.duration/60)+":"+Math.floor(myvideo.duration%60)+"s"
+    }, 1000);
+    </script>
+</body>
+</html>

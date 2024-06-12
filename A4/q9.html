@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avinash</title>
+</head>
+<body>
+    <audio id="myAudio" controls>
+        <source src="audio.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    <br>
+    <button id="play" onclick="playM()">Play</button>
+    <button id="pause" onclick="pauseM()">Pause</button>
+    <input id="volume" type="range" min="1" max="100">
+    <span id="currentTime"></span> / <span id="totalTime">0:00</span>
+    <script>
+        let myAudio = document.getElementById("myAudio")
+        let play = document.getElementById("play")
+        let pause = document.getElementById("pause")
+        let volumeControl = document.getElementById("volume")
+
+        let currentTimeDisplay = document.getElementById("currentTime");
+        let totalTimeDisplay = document.getElementById("totalTime");
+
+        function playM(){
+            myAudio.play()
+        }
+        function pauseM(){
+            myAudio.pause()
+        }
+        volumeControl.addEventListener("input", function() {
+        myAudio.volume = volumeControl.value/100;
+        console.log("sdad");
+    });
+    setInterval(() => {
+        currentTimeDisplay.innerText=Math.floor(myAudio.currentTime/60)+":"+Math.floor(myAudio.currentTime%60)+"s"
+        totalTimeDisplay.innerText=Math.floor(myAudio.duration/60)+":"+Math.floor(myAudio.duration%60)+"s"
+    }, 1000);
+    </script>
+</body>
+</html>

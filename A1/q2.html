@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2241016220</title>
+</head>
+<body>
+    <script>
+        function isValidUrl(string) {
+            try {
+                new URL(string);
+                document.write(string+" is valid URL<br>");
+            } catch (_) {
+                document.write(string + " is invalid URL<br>");
+            }
+        }
+        isValidUrl("https://www.teamdiversity.web.app");
+        isValidUrl("javascript");
+    </script>
+
+</body>
+</html>

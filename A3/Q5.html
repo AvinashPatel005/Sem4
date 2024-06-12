@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Update Pokémon Data</title>
+</head>
+<body>
+<form id="updateForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br><br>
+    
+    <label for="type">Type:</label>
+    <input type="text" id="type" name="type" required><br><br>
+
+    <button type="submit">Update Pokémon Data</button>
+</form>
+
+<div id="message"></div>
+
+<script>
+document.getElementById("updateForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    
+    var name = document.getElementById("name").value;
+    var type = document.getElementById("type").value;
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "update_pokemon.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            document.getElementById("message").innerHTML = xhr.responseText;
+        }
+    };
+    xhr.send("name=" + name + "&type=" + type);
+});
+</script>
+</body>
+</html>

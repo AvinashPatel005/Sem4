@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>2241016220</title>
+  </head>
+  <body>
+    <div id="output">Complete JavaScript Course</div>
+    Search for:
+    <input id="sText" type="text">
+    <br>
+    Replace with:
+    <input id="rText" type="text">
+    <br>
+    <button id="replaceButton">Replace</button>
+    <script>
+
+      var outputElement = document.getElementById("output");
+      var searchTextElement = document.getElementById("sText");
+     replaceTextElement = document.getElementById("rText");
+      var replaceButton = document.getElementById("replaceButton");
+
+      replaceButton.addEventListener("click", lookup);
+
+      function lookup() {
+        var s = outputElement.textContent;
+        var rt = searchTextElement.value;
+
+        var regex = new RegExp(rt);
+        if (s.match(regex)) {
+          var newText = s.replace(regex, replaceTextElement.value);
+          outputElement.textContent = newText;
+        }
+      }
+    </script>
+  </body>
+</html>

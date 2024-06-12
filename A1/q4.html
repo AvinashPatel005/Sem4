@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2241016220</title>
+</head>
+<body>
+    <script>
+        arr = [11, 12, 13, 19, 15, 16, 17, 14];
+            arr.sort();
+            i = arr[0];
+            for (num in arr) {
+                if (arr[num] != i) break;
+                i++;
+            }
+            document.write("missing number is " + i + "<br>");
+
+    </script>
+</body>
+</html>

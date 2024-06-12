@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>2241016220</title>
+  </head>
+  <body>
+    <div class="output"></div>
+    <input id="emailInput" type="text" placeholder="Enter Email" />
+    <button id="checkButton">Check</button>
+    <script>
+      var emailInput = document.getElementById("emailInput");
+      var outputDiv = document.querySelector(".output");
+      var checkButton = document.getElementById("checkButton");
+
+      checkButton.addEventListener("click", function () {
+        var email = emailInput.value;
+        var response = "";
+
+        var emailRegex = /([a-zA-z]+\d*)@[a-zA-z].[a-zA-z]/;
+        if (!emailRegex.test(email)) {
+          response = "Invalid Email";
+          outputDiv.style.color = "red";
+        } else {
+          response = "Valid email format!";
+          outputDiv.style.color = "green";
+        }
+        outputDiv.textContent = response;
+      });
+    </script>
+  </body>
+</html>

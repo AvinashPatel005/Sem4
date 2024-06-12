@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2241016220</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var count = $("#selected p").length;
+            $(".count").text("Number of <p> elements:"+count);
+        });
+    </script>
+</head>
+
+<body>
+    <div id="selected">
+        <p>Red</p>
+        <p>Orange</p>
+        <p>Yellow</p>
+        <p>Green</p>
+        <p>Blue</p>
+        <p>Indigo</p>
+        <p>Violet</p>
+        <span class="count"></span>
+    </div>
+</body>
+
+</html>

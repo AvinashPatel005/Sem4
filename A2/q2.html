@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2241016220</title>
+  </head>
+  <body>
+    <script>
+      const inventory = [];
+
+      function Item(name, model, cost, quantity) {
+        this.name = name;
+        this.model = model;
+        this.cost = cost;
+        this.quantity = quantity;
+      }
+
+      const item1 = new Item("Apple", "Vision", 10000, 1);
+      const item2 = new Item("Apple", "IPhone", 15000, 5);
+      const item3 = new Item("Apple", "IPad", 2000, 3);
+
+      inventory.push(item1, item2, item3);
+      console.log(inventory);
+      console.log(inventory[2].quantity);
+    </script>
+  </body>
+</html>

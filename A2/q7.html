@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2241016220</title>
+</head>
+<body>
+    <script>
+        const outputOne = () => {
+            console.log("One");
+        }
+        const outputTwo = () => {
+            console.log("Two");
+        }
+
+        const outputThreeThenOneAndTwo = () => {
+            console.log("Three");
+            setTimeout(outputOne, 1000);
+            setTimeout(outputTwo, 1000);
+        }
+
+        const outputFourThenThreeOneTwo = () => {
+            console.log("Four");
+            setTimeout(() => {
+                outputOne();
+            }, 4000);
+            setTimeout(outputThreeThenOneAndTwo, 1000);
+        }
+        outputFourThenThreeOneTwo()
+    </script>
+</body>
+</html>

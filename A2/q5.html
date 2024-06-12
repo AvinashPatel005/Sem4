@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2241016220</title>
+</head>
+<body>
+    <script>
+        let a = 5;
+        let arr = []
+        for (let index = 1; index < a; index++) {
+            let subarry = [];
+            for (let j = 1; j <=10; j++) {
+                subarry.push(index*j)
+            }
+            arr.push(subarry);
+        }
+
+       document.write("<table>")
+        function printMatrix(matrix) {
+            for (var i = 0; i < 10; i++) {
+                document.write("<tr>")
+                for (var j = 0; j < a-1; j++) {
+                    
+                    document.write("<th>"+matrix[j][i] + "</th>");
+                }
+                document.write("</tr>");
+            }
+        }
+    printMatrix(arr)
+    </script> 
+</body>
+</html>
